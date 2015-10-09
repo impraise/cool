@@ -9,6 +9,8 @@ https://github.com/impraise/impraise-web/pull/833/comment
 
 var EMOJI_PATH = "/images/icons/emoji/";
 
+var href = document.location.href;
+
 // Elements and data to be extracted on page load
 var BUTTON_CONTAINER;
 var EMOJI_URL;
@@ -17,12 +19,34 @@ var AUTHENTICITY_TOKEN;
 var CSRF_TOKEN;
 var TIMELINE_LAST_MODIFIED;
 
+function prepare() {
+  var valid = inspectPage();
+
+  // If some of the required elements/information are missing, abort
+  if (!valid) return;
+
+  addShortcutButtons();
+}
+
+function poll() {
+  var currentHref = document.location.href;
+
+  if (currentHref !== href) {
+    href = currentHref;
+    setTimeout(prepare, 1000);
+  }
+
+  setTimeout(poll, 200);
+}
+
 function inspectPage() {
   var assetHost = $("link[rel='assets']").getAttribute("href");
 
   EMOJI_URL = assetHost + EMOJI_PATH;
 
   var form = $(".js-new-comment-form");
+
+  if (!form) return false;
 
   BUTTON_CONTAINER = form.querySelector(".form-actions");
 
@@ -34,8 +58,6 @@ function inspectPage() {
   var timelineMarker = $("#partial-timeline-marker");
 
   TIMELINE_LAST_MODIFIED = timelineMarker.getAttribute("data-last-modified");
-
-  console.log(TIMELINE_LAST_MODIFIED);
 
   return !!(
     BUTTON_CONTAINER &&
@@ -63,7 +85,7 @@ function addShortcutButtons() {
 
     button.appendChild(shortcutButtonImage(shortcut));
 
-    button.addEventListener("click", activateShortcut.bind(null, shortcut));
+    button.addEventListener("click", activateShortcut.bind(button, shortcut));
 
     return button;
   });
@@ -98,6 +120,8 @@ function shortcutImagePath(shortcut) {
 
 function activateShortcut(shortcut, e) {
   e.preventDefault();
+
+  animateButtonImage(this);
 
   // Gets the comment POST endpoint URL by removing anything after the pull id
   var commentUrl = location.href.replace(/(pull\/\d+).*/, "$1/comment");
@@ -136,11 +160,24 @@ function activateShortcut(shortcut, e) {
   xhr.send(formData);
 }
 
+function animateButtonImage(button) {
+  var image = button.children[0];
+  var clone = image.cloneNode();
+
+  var offsetLeft = image.offsetLeft;
+  var offsetTop  = image.offsetTop;
+
+  button.insertBefore(clone, image);
+
+  clone.classList.add("cool-shortcut-animated-emoji");
+
+  clone.style.left = offsetLeft;
+  clone.style.top  = offsetTop;
+
+  setTimeout(function () { clone.remove(); }, 1000);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  var valid = inspectPage();
-
-  // If some of the required elements/information are missing, abort
-  if (!valid) return;
-
-  addShortcutButtons();
+  prepare();
+  poll();
 });

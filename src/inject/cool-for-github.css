@@ -1,3 +1,15 @@
+@keyframes animated-emoji {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(100);
+    opacity: 0;
+  }
+}
+
 .cool-shortcut-wrapper {
   float: left;
 
@@ -7,6 +19,7 @@
   float: none !important;
   margin-right: 5px;
   line-height: 0;
+  position: relative;
 }
 
 .cool-shortcut-wrapper .btn .emoji {
@@ -15,4 +28,29 @@
 
   -webkit-filter: drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white)
                   drop-shadow(1px 1px 0 white) drop-shadow(-1px 1px 0 white) ;
+}
+
+.cool-shortcut-wrapper .btn .emoji.cool-shortcut-animated-emoji {
+  position: absolute;
+
+  z-index: 99999;
+
+  -webkit-filter: none;
+
+  -webkit-animation: animated-emoji ease 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: both;
+  -webkit-transform-origin: 50% 50%;
+}
+
+.comment-body > p:only-child .emoji[alt=":+1:"] {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+.comment-body > p:only-child .emoji[alt=":shipit:"] {
+  display: block;
+  width: 100px;
+  height: 100px;
 }
