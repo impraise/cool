@@ -1,15 +1,14 @@
 # Cool for Github
 
-<center><img src="https://i.imgur.com/LmySUKb.jpg" alt="" width="300"/></center>
-
 Handy Emoji shortcuts for Github pull requests.
 
 ![](http://i.imgur.com/ssxk5ej.png)
 
-## Todo:
+## What is cool?
 
-- Icon
-- Push to Chrome store
+This dog is cool.
+
+<img src="https://i.imgur.com/LmySUKb.jpg" width=450>
 
 ## Credits
 
