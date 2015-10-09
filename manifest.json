@@ -10,11 +10,6 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "page_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "Cool for Github",
-    "default_popup": "src/page_action/page_action.html"
-  },
   "permissions": [
     "https://*.github.com/*/pull/*",
     "https://github.com/*/pull/*",
