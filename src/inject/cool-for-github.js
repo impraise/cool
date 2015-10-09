@@ -7,7 +7,8 @@ var $ = document.querySelector.bind(document);
 
 https://github.com/impraise/impraise-web/pull/833/comment
 
-var EMOJI_PATH = "/images/icons/emoji/";
+var EMOJI_PATH         = "/images/icons/emoji/";
+var WRAPPER_CLASS_NAME = "cool-shortcut-wrapper";
 
 var href = document.location.href;
 
@@ -75,6 +76,11 @@ function hiddenInputValue(form, name) {
 }
 
 function addShortcutButtons() {
+  if (BUTTON_CONTAINER.children[0].classList.contains(WRAPPER_CLASS_NAME)) {
+    // We've already applied the shortcut buttons apparently. Abort!
+    return;
+  }
+
   var buttons = SHORTCUTS.map(function (shortcut) {
     var button = document.createElement("button");
 
@@ -92,7 +98,7 @@ function addShortcutButtons() {
 
   var wrapper = document.createElement("div");
 
-  wrapper.classList.add("cool-shortcut-wrapper");
+  wrapper.classList.add(WRAPPER_CLASS_NAME);
 
   buttons.forEach(function (button) { wrapper.appendChild(button); });
 
