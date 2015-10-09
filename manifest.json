@@ -26,7 +26,8 @@
       ],
       "css": [
         "src/inject/cool-for-github.css"
-      ]
+      ],
+      "run_at": "document_start"
     },
     {
       "matches": [
@@ -37,7 +38,8 @@
       ],
       "js": [
         "src/inject/cool-for-github.js"
-      ]
+      ],
+      "run_at": "document_start"
     }
   ]
 }

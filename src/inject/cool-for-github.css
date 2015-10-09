@@ -1,3 +1,18 @@
-.cool-shortcut-container {
+.cool-shortcut-wrapper {
   float: left;
+
+}
+
+.cool-shortcut-wrapper .btn {
+  float: none !important;
+  margin-right: 5px;
+  line-height: 0;
+}
+
+.cool-shortcut-wrapper .btn .emoji {
+  width: 20px;
+  height: 20px;
+
+  -webkit-filter: drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white)
+                  drop-shadow(1px 1px 0 white) drop-shadow(-1px 1px 0 white) ;
 }
