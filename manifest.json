@@ -1,0 +1,48 @@
+{
+  "name": "Cool for Github",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "Emoji response shortcuts for Github",
+  "homepage_url": "https://github.com/impraise",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "page_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "Cool for Github",
+    "default_popup": "src/page_action/page_action.html"
+  },
+  "permissions": [
+    "https://*.github.com/*/pull/*",
+    "https://github.com/*/pull/*",
+    "http://*.github.com/*/pull/*",
+    "http://github.com/*/pull/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.github.com/*/pull/*",
+        "https://github.com/*/pull/*",
+        "http://*.github.com/*/pull/*",
+        "http://github.com/*/pull/*"
+      ],
+      "css": [
+        "src/inject/cool-for-github.css"
+      ]
+    },
+    {
+      "matches": [
+        "https://*.github.com/*/pull/*",
+        "https://github.com/*/pull/*",
+        "http://*.github.com/*/pull/*",
+        "http://github.com/*/pull/*"
+      ],
+      "js": [
+        "src/inject/cool-for-github.js"
+      ]
+    }
+  ]
+}
