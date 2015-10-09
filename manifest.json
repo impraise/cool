@@ -10,6 +10,9 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
+  "web_accessible_resources": [
+    "sounds/Glissful.wav"
+  ],
   "permissions": [
     "https://*.github.com/*",
     "https://github.com/*"

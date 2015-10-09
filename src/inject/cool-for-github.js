@@ -7,6 +7,8 @@ var $ = document.querySelector.bind(document);
 
 https://github.com/impraise/impraise-web/pull/833/comment
 
+var SOUND_URL          = chrome.extension.getURL("sounds/Glissful.wav")
+var SOUND              = new Audio(SOUND_URL);
 var EMOJI_PATH         = "/images/icons/emoji/";
 var WRAPPER_CLASS_NAME = "cool-shortcut-wrapper";
 
@@ -129,6 +131,9 @@ function activateShortcut(shortcut, e) {
 
   animateButtonImage(this);
 
+  // Easter egg!
+  if (Math.random() > 0.95) SOUND.play();
+
   // Gets the comment POST endpoint URL by removing anything after the pull id
   var commentUrl = location.href.replace(/(pull\/\d+).*/, "$1/comment");
 
@@ -187,3 +192,5 @@ document.addEventListener("DOMContentLoaded", function () {
   prepare();
   poll();
 });
+
+

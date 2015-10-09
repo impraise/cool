@@ -10,3 +10,5 @@ Handy Emoji shortcuts for Github pull requests.
 Issue reports and pull requests are greatly appreciated!
 
 ![Impraise, inc](http://i.imgur.com/x2oFA91.png)
+
+Sound credit: http://www.sonics.io/
