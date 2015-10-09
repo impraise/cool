@@ -1,6 +1,8 @@
 # Cool for Github
 
-![cool](https://i.imgur.com/LmySUKb.jpg)  
+<center><img src="https://i.imgur.com/LmySUKb.jpg" alt="" width="300"/></center>
+
+
 Image credit: www.butterflyphotography.ca
 
 Handy Emoji shortcuts for Github pull requests.
