@@ -2,7 +2,7 @@
 
 Handy Emoji shortcuts for Github pull requests.
 
-![](http://i.imgur.com/ssxk5ej.png)
+![](https://i.imgur.com/cbXW4Fe.gif)
 
 ## Credits
 
